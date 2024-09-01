@@ -1,0 +1,132 @@
+/* General container styles */
+.about-page-container {
+  width: 100%;
+  height: 100vh;
+  background-size: 180% 180%;
+  position: relative;
+}
+
+.cards {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  position: absolute;
+}
+
+/* Unique styles for each card */
+.cards .card-1 {
+  background-color: #f43f5e;
+  color: white;
+  border-radius: 10px;
+  height: 200px;
+  width: 200px;
+  position: absolute;
+  top: 200px;
+  left: 100px;
+}
+
+.cards .card-2 {
+  background-color: #f8f8f8;
+  color: black;
+  border: 2px solid #333;
+  position: absolute;
+  border-radius: 10px;
+  height: 420px;
+  width: 320px;
+  top: 230px;
+  left: 305px;
+}
+
+.cards .card-3 {
+  background-color: #3b22c5;
+  color: white;
+  border-radius: 10px;
+  position: absolute;
+  height: 180px;
+  width: 280px;
+  top: 405px;
+  left: 20px;
+}
+
+.cards .card-4 {
+  background-color: #34d399;
+  color: black;
+  border-radius: 10px;
+  position: absolute;
+  height: 280px;
+  width: 350px;
+  top:400px;
+  left:630px;
+}
+
+.cards .card-5 {
+  background-color: #eab308;
+  color: white;
+  border-radius: 10px;
+  position: absolute;
+  height: 300px;
+  width: 300px;
+  top:95px;
+  left: 630px;
+}
+
+.cards .card-6 {
+  background-color: #db2777;
+  color: white;
+  border-radius: 10px;
+  position: absolute;
+  height: 550px;
+  width: 250px;
+  top:150px;
+  left:1260px;
+}
+
+.cards .card-7 {
+  background-color: #2563eb;
+  color: white;
+  position: absolute;
+  border-radius: 10px;
+  height: 200px;
+  width: 320px;
+  top:195px;
+  left:935px;
+}
+
+.cards .card-8 {
+  background-color: #f43f5e;
+  color: white;
+  border-radius: 10px;
+  position: absolute;
+  height: 180px;
+  width: 270px;
+  top:400px;
+  left:985px;
+}
+
+.cards .card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 400ms ease;
+}
+
+.cards .card:hover {
+  transform: scale(1.1,1.1);
+}
+
+.cards:hover > .card:not(:hover) {
+  filter: blur(5px);
+  transform: scale(0.9,0.9);
+}
+
+.cards .card p.tip {
+  font-size: 1em;
+  font-weight: 700;
+}
+
+.cards .card p.second-text {
+  font-size: 0.7em;
+}

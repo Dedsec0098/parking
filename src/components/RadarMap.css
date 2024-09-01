@@ -1,0 +1,48 @@
+/* RadarMap.css */
+
+#map-container {
+    width: 80%;
+    height: 500px;
+    margin: 0 auto;
+    position: relative;
+  }
+  
+  #map {
+    height: 100%;
+    width: 100%;
+  }
+
+.popup-content {
+  background-color: black;
+  text-align: center;
+  color: red;
+}
+
+.popup-content h3 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.popup-content p {
+  margin: 5px 0 0;
+  font-size: 14px;
+}
+.radar-autocomplete-input {
+  border: 1px solid var(--radar-gray3);
+  border-radius: 4px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  color: var(--radar-gray8);
+  font-size: 1rem;
+  font-weight: 400;
+  height: 2.25rem;
+  line-height: 1.5;
+  margin-bottom: 5px;
+  outline: none;
+  padding: .375rem .75rem .375rem 40px;
+  text-overflow: ellipsis;
+  transition: all .3s ease;
+  -webkit-transition: all -webkit-transform .3s ease;
+  width: 100%;
+}
