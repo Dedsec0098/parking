@@ -1,0 +1,45 @@
+.hero-container {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* Full viewport height */
+  overflow: hidden;
+  background: transparent; /* Ensure background is transparent to see Vanta effect */
+}
+
+.hero-title, .hero-subtitle, .hero-button {
+  position: relative;
+  margin-top:0px;
+  margin-left: 70px;
+  z-index: 1; /* Ensure text and button are above the Vanta effect */
+  color: white; /* Text color for visibility against the background */
+}
+
+.hero-title {
+  font-size: 4rem;
+  margin-top: 250px;
+  margin-left: 70px;
+}
+
+.hero-subtitle {
+  font-size: 2rem;
+  margin-left: 70px;
+}
+
+.hero-button {
+  background-color: #444444;
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  font-size: 1rem;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.hero-button:hover {
+  background-color: #000000;
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
