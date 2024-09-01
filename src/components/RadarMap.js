@@ -2,9 +2,10 @@ import React from 'react';
 import Radar from 'radar-sdk-js';
 import 'radar-sdk-js/dist/radar.css';
 import './RadarMap.css';
+import mockData from '../assets/mockData.json';
 
 class RadarMap extends React.Component {
-  async componentDidMount() {
+  componentDidMount() {
     const apiKey = 'prj_test_pk_c930b0ad7045f6ed46872536a3fd6582d0e3619c'; 
     Radar.initialize(apiKey);
 
@@ -15,24 +16,28 @@ class RadarMap extends React.Component {
       zoom: 13,
     });
 
-    this.marker = Radar.ui.marker({
-      color: '#e60f0f',
-      popup: {
-        html: `<div style="
-        text-align: center;
-        color: black;
-        background-color: white; 
-        border-radius: 5px;
-        padding: 10px; 
-      ">
-        <h3 style="margin: 0; font-size: 16px;">Location Title</h3>
-        <p style="margin: 5px 0 0; font-size: 14px;">This is a custom popup text for the marker.</p>
+    // Loop through the updated mock data and add markers for each parking location
+    mockData.parkingLocations.forEach(location => {
+      Radar.ui.marker({
+        color: '#e60f0f',
+        popup: {
+          html: `<div style="
+          text-align: center;
+          color: black;
+          background-color: white; 
+          border-radius: 5px;
+          padding: 10px; 
+        ">
+        <h3 style="margin: 0; font-size: 16px;">${location.title}</h3>
+        <p style="margin: 5px 0 0; font-size: 14px;">Capacity: ${location.capacity} vehicles</p>
+        <p style="margin: 5px 0 0; font-size: 14px;">Distance: ${location.distanceFromUser} meters</p>
       </div>`,
-        offset: [0, -10], 
-      }
-    })
-    .setLngLat([80.04411, 12.82113])
-    .addTo(this.map);
+          offset: [0, -10], 
+        }
+      })
+      .setLngLat([location.longitude, location.latitude])
+      .addTo(this.map);
+    });
 
     // Autocomplete functionality
     Radar.ui.autocomplete({
@@ -50,7 +55,29 @@ class RadarMap extends React.Component {
         const coordinates = address.geometry.coordinates;
         const [lng, lat] = coordinates;
 
-        this.marker.setLngLat([lng, lat]);
+        if (this.marker) {
+          this.marker.setLngLat([lng, lat]);
+        } else {
+          this.marker = Radar.ui.marker({
+            color: '#e60f0f',
+            popup: {
+              html: `<div style="
+              text-align: center;
+              color: black;
+              background-color: white; 
+              border-radius: 5px;
+              padding: 10px; 
+            ">
+            <h3 style="margin: 0; font-size: 16px;">Selected Location</h3>
+            <p style="margin: 5px 0 0; font-size: 14px;">This is a selected location.</p>
+          </div>`,
+              offset: [0, -10], 
+            }
+          })
+          .setLngLat([lng, lat])
+          .addTo(this.map);
+        }
+
         this.map.setCenter([lng, lat]);
         this.map.setZoom(14);
       },
